@@ -10,7 +10,7 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6962864287:AAGqrAy0Q-mXjRahciFDGP8BHjETzSvVq7A")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7509391339:AAEjIzurrvNFQscOCIiog6zVeTLZrE5idZw")
 
 #Your API ID from my.telegram.org
 APP_ID = int(os.environ.get("APP_ID", "28442592"))
@@ -28,8 +28,8 @@ OWNER_ID = int(os.environ.get("OWNER_ID", "6957949462"))
 PORT = os.environ.get("PORT", "8080")
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://duamelonemail:tB1Iyhui9CzUNGdY@duamelon.32akh.mongodb.net/")
-DB_NAME = os.environ.get("DATABASE_NAME", "duamelonemail")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://koyebtomoro:StgTfmzgkN3BzORn@tomoro.bgils.mongodb.net/")
+DB_NAME = os.environ.get("DATABASE_NAME", "koyebtomoro")
 
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", "-1002221310034"))
@@ -42,7 +42,7 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 START_MSG = os.environ.get("START_MESSAGE", "ʜᴇʟʟᴏ {first}\n\nsᴀʏᴀ ᴀᴅᴀʟᴀʜ ʙᴏᴛ ᴘᴇɴʏɪᴍᴘᴀɴ ғɪʟᴇ ʏᴀɴɢ ᴍᴇᴍᴜɴɢᴋɪɴᴋᴀɴ ᴜɴᴛᴜᴋ ᴍᴇɴʏɪᴍᴘᴀɴ ғɪʟᴇ ᴘʀɪʙᴀᴅɪ ᴅɪ sᴀʟᴜʀᴀɴ ᴛᴇʀᴛᴇɴᴛᴜ ᴅᴀɴ ʙᴇʀʙᴀɢɪ ᴀᴋsᴇs ᴍᴇʟᴀʟᴜɪ ᴛᴀᴜᴛᴀɴ ᴜɴɪᴋ.")
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "6957949462 6962864287").split()):
+    for x in (os.environ.get("ADMINS", "6957949462").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
