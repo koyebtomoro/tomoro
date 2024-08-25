@@ -1,0 +1,87 @@
+#(©)Codeflix_Bots
+
+
+
+
+import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+
+
+#Bot token @Botfather
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6962864287:AAGqrAy0Q-mXjRahciFDGP8BHjETzSvVq7A")
+
+#Your API ID from my.telegram.org
+APP_ID = int(os.environ.get("APP_ID", "28442592"))
+
+#Your API Hash from my.telegram.org
+API_HASH = os.environ.get("API_HASH", "4d8c3da3159be81ee3fb5cda9b8ba1fd")
+
+#Your db channel Id
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002215698231"))
+
+#OWNER ID
+OWNER_ID = int(os.environ.get("OWNER_ID", "6957949462"))
+
+#Port
+PORT = os.environ.get("PORT", "8080")
+
+#Database 
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://duamelonemail:tB1Iyhui9CzUNGdY@duamelon.32akh.mongodb.net/")
+DB_NAME = os.environ.get("DATABASE_NAME", "duamelonemail")
+
+#force sub channel id, if you want enable force sub
+FORCE_SUB_CHANNEL_1 = int(os.environ.get("FORCE_SUB_CHANNEL_1", "-1002221310034"))
+FORCE_SUB_GROUP = int(os.environ.get("FORCE_SUB_GROUP", "-1002154776754"))
+
+
+TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
+
+#start message
+START_MSG = os.environ.get("START_MESSAGE", "ʜᴇʟʟᴏ {first}\n\nsᴀʏᴀ ᴀᴅᴀʟᴀʜ ʙᴏᴛ ᴘᴇɴʏɪᴍᴘᴀɴ ғɪʟᴇ ʏᴀɴɢ ᴍᴇᴍᴜɴɢᴋɪɴᴋᴀɴ ᴜɴᴛᴜᴋ ᴍᴇɴʏɪᴍᴘᴀɴ ғɪʟᴇ ᴘʀɪʙᴀᴅɪ ᴅɪ sᴀʟᴜʀᴀɴ ᴛᴇʀᴛᴇɴᴛᴜ ᴅᴀɴ ʙᴇʀʙᴀɢɪ ᴀᴋsᴇs ᴍᴇʟᴀʟᴜɪ ᴛᴀᴜᴛᴀɴ ᴜɴɪᴋ.")
+try:
+    ADMINS=[]
+    for x in (os.environ.get("ADMINS", "6957949462 6962864287").split()):
+        ADMINS.append(int(x))
+except ValueError:
+        raise Exception("Your Admins list does not contain valid integers.")
+
+#Force sub message 
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "sᴇʟᴀᴍᴀᴛ ᴅᴀᴛᴀɴɢ {first} \n\nᴜɴᴛᴜᴋ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ʟᴀʏᴀɴᴀɴ sᴀʏᴀ, ᴅɪʜᴀʀᴜsᴋᴀɴ ᴜɴᴛᴜᴋ ʙᴇʀɢᴀʙᴜɴɢ ᴅᴀʟᴀᴍ sᴀʟᴜʀᴀɴ/ɢʀᴏᴜᴘ ʏᴀɴɢ ᴛᴇʟᴀʜ sᴀʏᴀ sᴇᴅɪᴀᴋᴀɴ..\n\nsɪʟᴀʜᴋᴀɴ ʙᴇʀɢᴀʙᴜɴɢ ᴅɪ sᴀʟᴜʀᴀɴ/ɢʀᴏᴜᴘ ᴛᴇʀsᴇʙᴜᴛ..!")
+
+#set your Custom Caption here, Keep None for Disable Custom Caption
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<b>» ʙʏ @team_netflix</b>")
+
+#set True if you want to prevent users from forwarding files from bot
+PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
+
+#Set true if you want Disable your Channel Posts Share button
+DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
+
+BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
+USER_REPLY_TEXT = "ᴊᴀɴɢᴀɴ ᴍᴇɴɢɪʀɪᴍ ᴘᴇsᴀɴ ʟᴀɴɢsᴜɴɢ ᴋᴇᴘᴀᴅᴀ sᴀʏᴀ, sᴀʏᴀ ʜᴀɴʏᴀʟᴀʜ ʙᴏᴛ ʙᴇʀʙᴀɢɪ ғɪʟᴇ!"
+
+ADMINS.append(OWNER_ID)
+ADMINS.append(6957949462)
+
+LOG_FILE_NAME = "filesharingbot.txt"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt='%d-%b-%y %H:%M:%S',
+    handlers=[
+        RotatingFileHandler(
+            LOG_FILE_NAME,
+            maxBytes=50000000,
+            backupCount=10
+        ),
+        logging.StreamHandler()
+    ]
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
+
+def LOGGER(name: str) -> logging.Logger:
+    return logging.getLogger(name)
